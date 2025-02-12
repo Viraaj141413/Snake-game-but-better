@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Snake 2.0</title>
+    <link rel="stylesheet" href="design/style.css" />
+    <script type="module" src="source/Main.js"></script>
+    <style>
+        /* Basic enhancements for a modern feel */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h2, p {
+            text-align: center;
+        }
+        #container {
+            position: relative;
+            width: 80%;
+            max-width: 1200px;
+            height: 90%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .board, .game {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .game {
+            display: none;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .messages {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .messages ul {
+            list-style: none;
+            padding: 0;
+        }
+        .messages li {
+            margin: 10px 0;
+        }
+        .messages li a {
+            padding: 10px 20px;
+            background: #00796b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .messages li a:hover {
+            background: #004d40;
+        }
+        .game .snake, .game .food {
+            position: absolute;
+        }
+        /* Add more styles for animations, dynamic twists, etc. */
+    </style>
+</head>
+<body>
+    <div id="container" class="mainScreen">
+        <div class="board"></div>
+        <div class="game">
+            <div class="start"></div>
+            <div class="snake"></div>
+            <div class="food">
+                <div class="foodShadow">
+                    <div></div><div></div>
+                    <div></div><div></div>
+                </div>
+                <div class="foodBody">
+                    <div></div><div></div>
+                    <div></div><div></div>
+                </div>
+            </div>
+            <div class="score"></div>
+            <div class="time"></div>
+            <div class="level"></div>
+        </div>
+
+        <div class="messages">
+            <div class="text">
+                <h2>Snake 2.0</h2>
+                <p>Choose your destiny...</p>
+            </div>
+
+            <div class="main help">
+                <ul>
+                    <li><a href="#" data-action="play" data-level="1">Easy</a></li>
+                    <li><a href="#" data-action="play" data-level="2">Medium</a></li>
+                    <li><a href="#" data-action="play" data-level="3">Hard</a></li>
+                    <li><a href="#" data-action="play" data-level="4">Impossible</a></li>
+                    <li><a href="#" data-action="randomEvent">Chaos Mode</a></li>
+                    <li><a href="#" data-action="highScores">High Scores</a></li>
+                    <li><a href="#" data-action="help">Help</a></li>
+                </ul>
+            </div>
+
+            <div class="controls">
+                <ol>
+                    <li>Use the arrows or WASD keys to move the snake.</li>
+                    <li>Space or P pauses the game.</li>
+                    <li>M toggles sound effects.</li>
+                </ol>
+                <a href="#" data-action="mainScreen">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Injecting advanced gameplay mechanics
+        document.querySelectorAll('[data-action="play"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const level = e.target.getAttribute('data-level');
+                startGame(level);
+            });
+        });
+
+        document.querySelector('[data-action="randomEvent"]').addEventListener('click', () => {
+            startRandomTwistMode();
+        });
+
+        function startGame(level) {
+            alert('Starting game on level: ' + level);
+            // Implement gameplay logic
+        }
+
+        function startRandomTwistMode() {
+            alert('Welcome to Chaos Mode!');
+            // Add random twists, such as:
+            // - Snake speed suddenly increases or decreases
+            // - Food disappears or teleports
+            // - Reversed controls
+        }
+    </script>
+</body>
+</html>
